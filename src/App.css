@@ -1,0 +1,32 @@
+.side-lines {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  width: 100px;
+  pointer-events: none;
+  z-index: 1;
+  display: none;
+}
+
+.side-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background: linear-gradient(180deg, var(--brand) 0%, var(--brand-strong) 100%);
+}
+
+.side-line-1 {
+  right: 64px;
+}
+
+.side-line-2 {
+  right: 88px;
+}
+
+@media screen and (min-width: 1280px) {
+  .side-lines {
+    display: block;
+  }
+}

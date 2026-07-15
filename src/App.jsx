@@ -1,19 +1,19 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Navbar from './components/navbar/Navbar';
+import Navbar from './components/navbar/Navbar.jsx';
+import Footer from './components/footer/Footer.jsx';
 import Home from './pages/Home/Home.jsx';
-import ContactPage from './pages/ContactPage/Contact.jsx';
+import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    <>
+      <div className="side-lines" aria-hidden="true">
+        <span className="side-line side-line-1" />
+        <span className="side-line side-line-2" />
+      </div>
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<div>About Page</div>} />
-        <Route path="/projects" element={<div>Projects Page</div>} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
-    </BrowserRouter>
+      <Home />
+      <Footer />
+    </>
   );
 }
 
