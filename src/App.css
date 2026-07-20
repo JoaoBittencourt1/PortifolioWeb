@@ -1,3 +1,8 @@
+.app-content {
+  position: relative;
+  z-index: 2;
+}
+
 .side-lines {
   position: fixed;
   top: 0;
@@ -29,4 +34,12 @@
   .side-lines {
     display: block;
   }
+}
+
+.liquid-filters {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  pointer-events: none;
 }

@@ -1,0 +1,62 @@
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.bg-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+  animation: orb-float 20s ease-in-out infinite;
+}
+
+.bg-orb-1 {
+  width: 480px;
+  height: 480px;
+  background: radial-gradient(circle, rgba(255, 77, 77, 0.38) 0%, transparent 68%);
+  top: -12%;
+  left: -8%;
+}
+
+.bg-orb-2 {
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, rgba(214, 40, 57, 0.28) 0%, transparent 68%);
+  bottom: 15%;
+  right: -10%;
+  animation-delay: -7s;
+}
+
+.bg-orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(255, 77, 77, 0.18) 0%, transparent 70%);
+  top: 45%;
+  left: 35%;
+  animation-delay: -13s;
+}
+
+@keyframes orb-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(28px, -24px) scale(1.06);
+  }
+
+  66% {
+    transform: translate(-22px, 18px) scale(0.94);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-orb {
+    animation: none;
+  }
+}

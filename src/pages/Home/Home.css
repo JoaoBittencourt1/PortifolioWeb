@@ -3,9 +3,36 @@
 /* ------------------------------------------------------------------ */
 
 .hero {
+  position: relative;
   border-top: none;
   padding-top: 72px;
   padding-bottom: 96px;
+  overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  width: 600px;
+  height: 600px;
+  transform: translateX(-60%);
+  background: radial-gradient(circle, rgba(255, 77, 77, 0.12) 0%, transparent 65%);
+  pointer-events: none;
+  animation: hero-glow-pulse 8s ease-in-out infinite;
+}
+
+@keyframes hero-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+    transform: translateX(-60%) scale(1);
+  }
+
+  50% {
+    opacity: 1;
+    transform: translateX(-60%) scale(1.08);
+  }
 }
 
 .hero-grid {
@@ -29,7 +56,10 @@
   font-weight: 800;
   letter-spacing: -0.02em;
   line-height: 1.1;
-  color: var(--foreground);
+  background: linear-gradient(120deg, #ffffff 0%, #f2f2f2 45%, #ff4d4d 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .hero-description {
@@ -75,6 +105,17 @@
   border: 2px solid var(--brand);
   border-radius: 12px;
   z-index: 0;
+  box-shadow: 0 0 40px rgba(255, 77, 77, 0.25);
+}
+
+.hero-photo-frame::after {
+  content: '';
+  position: absolute;
+  inset: -20px;
+  border-radius: 20px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 77, 77, 0.2), transparent 60%);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .hero-photo {
@@ -97,6 +138,16 @@
   }
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .hero-glow {
+    animation: none;
+  }
+
+  .timeline-marker {
+    animation: none;
+  }
+}
+
 /* ------------------------------------------------------------------ */
 /* About                                                               */
 /* ------------------------------------------------------------------ */
@@ -112,6 +163,19 @@
   gap: 1.1rem;
   border-left: 2px solid var(--border);
   padding-left: 1.25rem;
+}
+
+.quick-fact {
+  padding: 0.85rem 1rem;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.quick-fact:hover {
+  border-color: rgba(255, 77, 77, 0.3);
+  box-shadow: 0 0 24px rgba(255, 77, 77, 0.08);
 }
 
 .quick-fact dt {
@@ -148,16 +212,38 @@
 
 .timeline-item {
   position: relative;
+  padding: 1.25rem 1.25rem 1.25rem 0.5rem;
+  margin-left: -0.5rem;
+  border-radius: 12px;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.timeline-item:hover {
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: inset 0 0 0 1px rgba(255, 77, 77, 0.12);
 }
 
 .timeline-marker {
   position: absolute;
   left: -1.9rem;
-  top: 0.35rem;
+  top: 1.6rem;
   width: 10px;
   height: 10px;
   border-radius: 999px;
   background: var(--brand);
+  box-shadow: 0 0 12px rgba(255, 77, 77, 0.6);
+  animation: marker-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes marker-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 18px rgba(255, 77, 77, 0.75);
+  }
 }
 
 .timeline-period {
@@ -200,7 +286,14 @@
 
 .skills-group {
   border-left: 2px solid var(--border);
-  padding-left: 1.25rem;
+  padding: 1rem 0 1rem 1.25rem;
+  border-radius: 0 12px 12px 0;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.skills-group:hover {
+  background: rgba(255, 255, 255, 0.02);
+  border-left-color: rgba(255, 77, 77, 0.45);
 }
 
 .skills-group-title {
@@ -245,13 +338,15 @@
   justify-content: space-between;
   align-items: baseline;
   gap: 1rem;
-  padding: 1.25rem 0;
+  padding: 1.25rem 0.75rem;
+  margin: 0 -0.75rem;
+  border-radius: 10px;
   text-decoration: none;
-  transition: padding-left 0.2s ease, color 0.2s ease;
+  transition: background 0.25s ease, color 0.2s ease;
 }
 
 .contact-link:hover {
-  padding-left: 0.5rem;
+  background: rgba(255, 77, 77, 0.06);
   color: var(--brand);
 }
 

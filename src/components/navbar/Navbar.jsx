@@ -1,3 +1,4 @@
+import { motion as Motion } from 'framer-motion';
 import Monogram from '../monogram/Monogram.jsx';
 import './Navbar.css';
 
@@ -10,7 +11,12 @@ const NAV_LINKS = [
 
 function Navbar() {
   return (
-    <header className="navbar">
+    <Motion.header
+      className="navbar"
+      initial={{ y: -72, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+    >
       <div className="navbar-container">
         <a href="#top" className="navbar-brand" aria-label="Voltar ao topo">
           <Monogram />
@@ -18,14 +24,22 @@ function Navbar() {
         </a>
 
         <nav className="nav-menu">
-          {NAV_LINKS.map((item) => (
-            <a key={item.href} href={item.href} className="nav-link">
+          {NAV_LINKS.map((item, i) => (
+            <Motion.a
+              key={item.href}
+              href={item.href}
+              className="nav-link"
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.4, delay: 0.15 + i * 0.06 }}
+              whileHover={{ color: 'var(--brand)' }}
+            >
               {item.label}
-            </a>
+            </Motion.a>
           ))}
         </nav>
       </div>
-    </header>
+    </Motion.header>
   );
 }
 

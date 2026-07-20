@@ -57,10 +57,32 @@ a {
 .section {
   padding: 88px 0;
   border-top: 1px solid var(--border);
+  position: relative;
+}
+
+.section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(1100px, 100%);
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 77, 77, 0.35) 50%,
+    transparent 100%
+  );
+  opacity: 0.6;
 }
 
 .section:first-of-type {
   border-top: none;
+}
+
+.section:first-of-type::before {
+  display: none;
 }
 
 /* Numbered section header: "01 — Title" with a thin rule trailing off */
@@ -166,6 +188,13 @@ a {
   padding: 0.3rem 0.75rem;
   font-size: 0.8rem;
   color: var(--muted-foreground);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+}
+
+.tag-glow:hover {
+  border-color: rgba(255, 77, 77, 0.45);
+  color: var(--foreground);
+  box-shadow: 0 0 16px rgba(255, 77, 77, 0.15);
 }
 
 /* ------------------------------------------------------------------ */
