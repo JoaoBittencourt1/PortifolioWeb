@@ -62,9 +62,9 @@ function DetailModal({ anchor, title, subtitle, body, link, onClose }) {
           aria-modal="false"
           aria-labelledby="detail-popover-title"
           style={{ top: pos.top, left: pos.left, '--arrow-left': `${pos.arrowLeft}px` }}
-          initial={{ opacity: 0, y: -8, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          exit={{ opacity: 0, y: -6, scale: 0.97 }}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.16, ease: [0.22, 1, 0.36, 1] }}
         >
           <button type="button" className="detail-popover-close" onClick={onClose} aria-label="Fechar">
