@@ -40,11 +40,11 @@
   border-radius: inherit;
   background: conic-gradient(
     from var(--glass-angle, 0deg),
-    rgba(255, 77, 77, 0.75),
+    rgba(255, 255, 255, 0.75),
     rgba(255, 255, 255, 0.35),
-    rgba(255, 77, 77, 0.25),
+    rgba(255, 255, 255, 0.25),
     rgba(255, 255, 255, 0.4),
-    rgba(255, 77, 77, 0.75)
+    rgba(255, 255, 255, 0.75)
   );
   filter: blur(10px);
   opacity: 0.45;
@@ -92,7 +92,7 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.5),
     inset 0 -1px 0 rgba(255, 255, 255, 0.08),
     0 14px 36px rgba(0, 0, 0, 0.38),
-    0 0 24px rgba(255, 77, 77, 0.14);
+    0 0 24px rgba(255, 255, 255, 0.14);
 }
 
 .liquid-glass-btn__blob {
@@ -105,7 +105,7 @@
   background: radial-gradient(
     circle at 35% 35%,
     rgba(255, 255, 255, 0.16),
-    rgba(255, 77, 77, 0.08) 50%,
+    rgba(255, 255, 255, 0.08) 50%,
     transparent 72%
   );
   opacity: 0.55;
@@ -120,15 +120,15 @@
 }
 
 .liquid-glass-btn--primary {
-  background: rgba(48, 20, 22, 0.58);
-  border-color: rgba(255, 77, 77, 0.38);
+  background: rgba(28, 28, 28, 0.58);
+  border-color: rgba(255, 255, 255, 0.38);
 }
 
 .liquid-glass-btn--primary .liquid-glass-btn__surface {
   background: linear-gradient(
     145deg,
-    rgba(255, 77, 77, 0.28) 0%,
-    rgba(255, 77, 77, 0.08) 45%,
+    rgba(255, 255, 255, 0.28) 0%,
+    rgba(255, 255, 255, 0.08) 45%,
     rgba(255, 255, 255, 0.06) 100%
   );
 }
@@ -136,19 +136,19 @@
 .liquid-glass-btn--primary .liquid-glass-btn__blob {
   background: radial-gradient(
     circle at 35% 35%,
-    rgba(255, 120, 120, 0.22),
-    rgba(255, 77, 77, 0.1) 52%,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.1) 52%,
     transparent 74%
   );
   opacity: 0.65;
 }
 
 .liquid-glass-btn--primary:hover {
-  background: rgba(56, 24, 26, 0.65);
+  background: rgba(36, 36, 36, 0.65);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.48),
     0 14px 38px rgba(0, 0, 0, 0.4),
-    0 0 28px rgba(255, 77, 77, 0.22);
+    0 0 28px rgba(255, 255, 255, 0.22);
 }
 
 .liquid-glass-btn--outline .liquid-glass-btn__blob {

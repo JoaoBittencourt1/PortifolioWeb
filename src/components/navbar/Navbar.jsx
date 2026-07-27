@@ -1,4 +1,5 @@
 import { motion as Motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
 import Monogram from '../monogram/Monogram.jsx';
 import './Navbar.css';
 
@@ -10,6 +11,9 @@ const NAV_LINKS = [
 ];
 
 function Navbar() {
+  const { pathname } = useLocation();
+  const onHome = pathname === '/';
+
   return (
     <Motion.header
       className="navbar"
@@ -18,16 +22,16 @@ function Navbar() {
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
     >
       <div className="navbar-container">
-        <a href="#top" className="navbar-brand" aria-label="Voltar ao topo">
+        <Link to="/#top" className="navbar-brand" aria-label="Voltar ao topo">
           <Monogram />
           <span className="navbar-name">João Bittencourt</span>
-        </a>
+        </Link>
 
         <nav className="nav-menu">
           {NAV_LINKS.map((item, i) => (
             <Motion.a
               key={item.href}
-              href={item.href}
+              href={onHome ? item.href : `/${item.href}`}
               className="nav-link"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}

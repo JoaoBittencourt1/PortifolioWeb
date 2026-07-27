@@ -3,7 +3,7 @@
   top: 0;
   z-index: 999;
   border-bottom: 1px solid var(--border);
-  background: rgba(22, 22, 22, 0.75);
+  background: rgba(8, 8, 8, 0.82);
   backdrop-filter: blur(10px);
 }
 
@@ -32,8 +32,8 @@
 
 .navbar-brand:hover {
   color: var(--brand);
-  background: rgba(255, 77, 77, 0.08);
-  box-shadow: 0 0 20px rgba(255, 77, 77, 0.12);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.12);
 }
 
 .navbar-brand:hover .navbar-name {
@@ -82,8 +82,8 @@
 
 .nav-link:hover {
   color: var(--brand);
-  background: rgba(255, 77, 77, 0.1);
-  box-shadow: 0 0 18px rgba(255, 77, 77, 0.15);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.15);
 }
 
 .nav-link:hover::after {
@@ -91,7 +91,7 @@
 }
 
 .nav-link:focus-visible {
-  outline: 2px solid rgba(255, 77, 77, 0.55);
+  outline: 2px solid rgba(255, 255, 255, 0.55);
   outline-offset: 2px;
 }
 

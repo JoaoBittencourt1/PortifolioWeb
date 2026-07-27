@@ -1,0 +1,161 @@
+/* ------------------------------------------------------------------ */
+/* Hero                                                                */
+/* ------------------------------------------------------------------ */
+
+.project-hero {
+  padding-top: 140px;
+}
+
+.project-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-back:hover {
+  color: var(--brand);
+}
+
+.project-kicker {
+  margin: 2rem 0 0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--brand);
+}
+
+.project-title {
+  margin: 0.6rem 0 0;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(120deg, #ffffff 0%, #f2f2f2 45%, #d4d4d4 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project-tagline {
+  margin: 1.25rem 0 0;
+  max-width: 640px;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--foreground);
+}
+
+.project-role {
+  margin: 1rem 0 0;
+  max-width: 640px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--muted-foreground);
+}
+
+.project-repo-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-top: 1.5rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--brand);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.project-repo-link:hover {
+  color: var(--foreground);
+}
+
+/* ------------------------------------------------------------------ */
+/* Features                                                            */
+/* ------------------------------------------------------------------ */
+
+.project-features-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.project-feature-card {
+  padding: 1.1rem 1.25rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-feature-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 24px rgba(255, 255, 255, 0.08);
+}
+
+.project-feature-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.project-feature-body {
+  margin: 0.5rem 0 0;
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+@media screen and (min-width: 720px) {
+  .project-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Architecture                                                        */
+/* ------------------------------------------------------------------ */
+
+.project-arch-grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.1rem;
+}
+
+.project-arch-card {
+  padding: 1.1rem 1.25rem;
+  border-radius: 12px;
+  border-left: 2px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.project-arch-label {
+  display: block;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--brand);
+}
+
+.project-arch-value {
+  display: block;
+  margin-top: 0.3rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.project-arch-detail {
+  margin: 0.5rem 0 0;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--muted-foreground);
+}
+
+@media screen and (min-width: 720px) {
+  .project-arch-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
