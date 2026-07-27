@@ -53,16 +53,16 @@ function App() {
           <ParticlesLayer />
           <GhostCursor
             color="#ffffff"
-            brightness={0.5}
+            brightness={0.25}
             edgeIntensity={0}
-            trailLength={5}
-            inertia={0.45}
+            trailLength={3}
+            inertia={0.35}
             grainIntensity={0.05}
-            bloomStrength={0.1}
+            bloomStrength={0.04}
             bloomRadius={1}
-            bloomThreshold={0.025}
-            fadeDelayMs={800}
-            fadeDurationMs={1000}
+            bloomThreshold={0.15}
+            fadeDelayMs={500}
+            fadeDurationMs={700}
             mixBlendMode="screen"
             zIndex={0}
           />
