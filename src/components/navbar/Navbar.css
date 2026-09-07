@@ -9,42 +9,13 @@
 
 .navbar-container {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
   height: 68px;
   max-width: 1100px;
   margin: 0 auto;
   padding: 0 24px;
-}
-
-.navbar-brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.65rem;
-  color: var(--foreground);
-  text-decoration: none;
-  border-radius: 8px;
-  padding: 0.35rem 0.5rem;
-  margin: 0 -0.5rem;
-  transition: color 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
-}
-
-.navbar-brand:hover {
-  color: var(--brand);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.12);
-}
-
-.navbar-brand:hover .navbar-name {
-  color: var(--brand);
-}
-
-.navbar-name {
-  display: none;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: color 0.25s ease;
 }
 
 .nav-menu {
@@ -93,12 +64,6 @@
 .nav-link:focus-visible {
   outline: 2px solid rgba(255, 255, 255, 0.55);
   outline-offset: 2px;
-}
-
-@media screen and (min-width: 640px) {
-  .navbar-name {
-    display: inline;
-  }
 }
 
 @media screen and (min-width: 768px) {
