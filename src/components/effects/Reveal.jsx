@@ -19,7 +19,7 @@ const variants = {
 };
 
 function Reveal({
-  as: MotionComponent = motion.div,
+  as = motion.div,
   children,
   className,
   delay = 0,
@@ -27,6 +27,7 @@ function Reveal({
   once = true,
 }) {
   const reduceMotion = useReducedMotion();
+  const MotionComponent = typeof as === 'string' ? motion[as] : as;
   const motionProps = reduceMotion
     ? {}
     : {

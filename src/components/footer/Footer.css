@@ -6,30 +6,51 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  max-width: 1100px;
+  gap: 12px;
+  max-width: var(--container);
   margin: 0 auto;
-  padding: 36px 24px;
-  font-size: 0.9rem;
-  color: var(--muted-foreground);
-  text-align: center;
+  padding: 32px var(--gutter);
+  font-size: 0.85rem;
+  color: var(--subtle-foreground);
+}
+
+.footer-copyright {
+  margin: 0;
 }
 
 .footer-name {
-  margin: 0;
   padding: 0;
   border: none;
   background: none;
   font: inherit;
-  font-weight: 600;
-  color: var(--foreground);
+  color: inherit;
   cursor: pointer;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
 .footer-name:hover {
-  color: var(--brand);
-  text-shadow: 0 0 18px rgba(255, 255, 255, 0.35);
+  color: var(--foreground);
+}
+
+.footer-links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer-links a {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--foreground);
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .capivara-overlay {
@@ -40,7 +61,7 @@
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: rgba(0, 0, 0, 0.72);
+  background: rgba(0, 0, 0, 0.8);
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   animation: capivara-fade-in 0.25s ease;
@@ -51,10 +72,7 @@
   max-height: min(80vh, 520px);
   width: auto;
   height: auto;
-  border-radius: 16px;
-  box-shadow:
-    0 0 40px rgba(255, 255, 255, 0.25),
-    0 20px 48px rgba(0, 0, 0, 0.45);
+  border-radius: 12px;
   animation: capivara-pop 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -71,7 +89,7 @@
 @keyframes capivara-pop {
   from {
     opacity: 0;
-    transform: scale(0.88) translateY(12px);
+    transform: scale(0.94) translateY(8px);
   }
 
   to {
@@ -84,42 +102,5 @@
   .capivara-overlay,
   .capivara-gif {
     animation: none;
-  }
-}
-
-.footer-links {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.footer-links a {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  text-decoration: none;
-  color: var(--muted-foreground);
-  transition: color 0.2s ease;
-}
-
-.footer-links a:hover {
-  color: var(--brand);
-}
-
-.footer-icon {
-  width: 16px;
-  height: 16px;
-  object-fit: contain;
-}
-
-.footer-copyright {
-  margin: 0;
-}
-
-@media screen and (min-width: 768px) {
-  .footer-container {
-    flex-direction: row;
-    justify-content: space-between;
   }
 }
