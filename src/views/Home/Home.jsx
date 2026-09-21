@@ -7,7 +7,6 @@ import dynamic from 'next/dynamic';
 import Reveal from '../../components/effects/Reveal.jsx';
 import SectionHead from '../../components/effects/SectionHead.jsx';
 import ScrollExpand from '../../components/effects/ScrollExpand/ScrollExpand.jsx';
-import PixelSwap from '../../components/effects/PixelSwap/PixelSwap.jsx';
 import CardSwap, { Card } from '../../components/effects/CardSwap/CardSwap.jsx';
 import TiltedCard from '../../components/effects/TiltedCard/TiltedCard.jsx';
 import ThoughtLine from '../../components/effects/ThoughtLine/ThoughtLine.jsx';
@@ -44,10 +43,7 @@ const PROJECTS = [
     name: 'Vanep',
     href: '/vanep',
     link: { href: 'https://www.vanep.com.br', label: 'vanep.com.br' },
-    media: [
-      { src: '/projects/vanep-van.webp', alt: 'Motorista ao lado de uma van escolar' },
-      { src: '/projects/vanep-embarque.webp', alt: 'Crianças embarcando na van escolar' },
-    ],
+    image: { src: '/projects/vanep-van.webp', alt: 'Motorista ao lado de uma van escolar' },
     period: '2026 — em desenvolvimento',
     role: 'Tech Lead & Desenvolvedor principal',
     summary:
@@ -58,10 +54,7 @@ const PROJECTS = [
     name: 'LinuxBit',
     href: '/linuxbit',
     link: { href: 'https://github.com/JoaoBittencourt1/LinuxBit', label: 'GitHub' },
-    media: [
-      { src: '/projects/linuxbit-arch.webp', alt: 'Desktop do Arch Linux' },
-      { src: '/projects/linuxbit-popos.webp', alt: 'Desktop do Pop!_OS' },
-    ],
+    image: { src: '/projects/linuxbit-arch.webp', alt: 'Desktop do Arch Linux' },
     period: '2025 — em desenvolvimento',
     role: 'Idealizador & Desenvolvedor',
     summary:
@@ -118,7 +111,7 @@ const SKILL_GROUPS = [
   },
   {
     title: 'Back-end',
-    items: ['Spring Security', 'JWT', 'OAuth 2.0', 'JPA / Hibernate', 'Maven', 'REST', 'WebSocket', 'OpenAPI / Swagger'],
+    items: ['Spring Security', 'JWT', 'OAuth 2.0', 'JPA / Hibernate', 'Eloquent (Laravel)', 'Maven', 'REST', 'WebSocket', 'OpenAPI / Swagger'],
   },
   {
     title: 'Dados & mensageria',
@@ -294,46 +287,12 @@ function Projects() {
   );
 }
 
-const HOVER_INTENT_MS = 100;
-
-// Hovering or focusing anywhere on the card swaps the cover image. A short hover-intent
-// delay keeps a pointer just passing over the card from triggering the swap.
 function ProjectCard({ project: p }) {
-  const [active, setActive] = useState(false);
-  const intentRef = useRef(0);
-
-  const activate = () => {
-    window.clearTimeout(intentRef.current);
-    intentRef.current = window.setTimeout(() => setActive(true), HOVER_INTENT_MS);
-  };
-  const deactivate = () => {
-    window.clearTimeout(intentRef.current);
-    setActive(false);
-  };
-
-  useEffect(() => () => window.clearTimeout(intentRef.current), []);
-
   return (
-    <article
-      className="project-card"
-      onMouseEnter={activate}
-      onMouseLeave={deactivate}
-      onFocus={() => setActive(true)}
-      onBlur={deactivate}
-    >
-      <PixelSwap
-        className="project-card-media"
-        trigger="manual"
-        active={active}
-        aspectRatio="16 / 9"
-        pixelSize={48}
-        pattern="diagonal"
-        randomness={0.35}
-        duration={900}
-        pixelDuration={320}
-        firstContent={<img src={p.media[0].src} alt={p.media[0].alt} className="project-card-img" />}
-        secondContent={<img src={p.media[1].src} alt={p.media[1].alt} className="project-card-img" />}
-      />
+    <article className="project-card">
+      <div className="project-card-media">
+        <img src={p.image.src} alt={p.image.alt} className="project-card-img" />
+      </div>
       <div className="project-card-body">
         <div className="project-card-top">
           <span className="project-card-period">{p.period}</span>

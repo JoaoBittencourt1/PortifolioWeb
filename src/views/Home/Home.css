@@ -230,6 +230,8 @@
 }
 
 .project-card-media {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   border-bottom: 1px solid var(--border);
   background: var(--background);
 }
