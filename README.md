@@ -1,12 +1,20 @@
-# React + Vite
+# Portfólio — João Bittencourt
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfólio pessoal feito com [Next.js](https://nextjs.org) (App Router), Framer Motion, tsParticles e Three.js.
 
-Currently, two official plugins are available:
+## Scripts
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev     # servidor de desenvolvimento em http://localhost:3000
+npm run build   # build de produção
+npm start       # serve o build de produção
+npm run lint
+```
 
-## Expanding the ESLint configuration
+## Estrutura
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `src/app/` — rotas (`/`, `/vanep`, `/linuxhub`), layout raiz e metadados
+- `src/views/` — conteúdo de cada página
+- `src/components/` — shell do app, navbar, footer e efeitos visuais
+- `public/` — imagens e favicon

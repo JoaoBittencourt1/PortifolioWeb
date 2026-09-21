@@ -1,4 +1,5 @@
-// eslint-disable-next-line no-unused-vars -- motion is used via JSX tags (<motion.span>), which this rule doesn't detect
+'use client';
+
 import { motion } from 'framer-motion';
 import Reveal from './Reveal.jsx';
 

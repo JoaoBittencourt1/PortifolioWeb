@@ -1,5 +1,6 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
-// eslint-disable-next-line no-unused-vars -- motion is used via JSX tags (<motion.div>), which this rule doesn't detect
 import { AnimatePresence, motion } from 'framer-motion';
 import './DetailModal.css';
 

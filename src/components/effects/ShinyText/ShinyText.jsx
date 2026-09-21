@@ -1,5 +1,6 @@
+'use client';
+
 import { useState, useCallback, useEffect, useRef } from 'react';
-// eslint-disable-next-line no-unused-vars -- motion is used via JSX tags (<motion.span>), which this rule doesn't detect
 import { motion, useMotionValue, useAnimationFrame, useTransform } from 'framer-motion';
 import './ShinyText.css';
 

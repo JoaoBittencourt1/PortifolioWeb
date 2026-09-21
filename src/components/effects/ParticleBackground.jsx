@@ -1,3 +1,5 @@
+'use client';
+
 import { useMemo } from 'react';
 import { Particles, useParticlesProvider } from '@tsparticles/react';
 import './ParticleBackground.css';

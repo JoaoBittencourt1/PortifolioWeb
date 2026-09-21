@@ -1,5 +1,7 @@
+'use client';
+
 import { motion as Motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom';
+import { usePathname } from 'next/navigation';
 import './Navbar.css';
 
 const NAV_LINKS = [
@@ -10,7 +12,7 @@ const NAV_LINKS = [
 ];
 
 function Navbar() {
-  const { pathname } = useLocation();
+  const pathname = usePathname();
   const onHome = pathname === '/';
 
   return (

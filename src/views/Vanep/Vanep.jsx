@@ -1,6 +1,7 @@
-// eslint-disable-next-line no-unused-vars -- motion is used via JSX tags (<motion.div>), which this rule doesn't detect
+'use client';
+
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Reveal from '../../components/effects/Reveal.jsx';
 import SectionHead from '../../components/effects/SectionHead.jsx';
 import '../../components/effects/ProjectPage.css';
@@ -66,7 +67,7 @@ function VanepHero() {
     <section id="top" className="project-hero section">
       <div className="container">
         <Reveal>
-          <Link to="/" className="project-back">
+          <Link href="/" className="project-back">
             ← Voltar ao portfólio
           </Link>
         </Reveal>
