@@ -1,18 +1,12 @@
 'use client';
 
 import { useSyncExternalStore } from 'react';
-import dynamic from 'next/dynamic';
 import { useReducedMotion } from 'framer-motion';
 import Navbar from './navbar/Navbar.jsx';
 import Footer from './footer/Footer.jsx';
-import GradientOrbs from './effects/GradientOrbs.jsx';
 import ClickSpark from './effects/ClickSpark/ClickSpark.jsx';
-import './effects/experimental.css';
+import { useTheme } from './theme/theme.js';
 import './AppShell.css';
-
-// WebGL/canvas effects only run in the browser.
-const ParticlesLayer = dynamic(() => import('./effects/ParticlesLayer.jsx'), { ssr: false });
-const GhostCursor = dynamic(() => import('./effects/GhostCursor/GhostCursor.jsx'), { ssr: false });
 
 const subscribeNoop = () => () => {};
 
@@ -24,12 +18,8 @@ function useHydrated() {
 function AppContent({ children }) {
   return (
     <>
-      <div className="side-lines" aria-hidden="true">
-        <span className="side-line side-line-1" />
-        <span className="side-line side-line-2" />
-      </div>
       <Navbar />
-      {children}
+      <main>{children}</main>
       <Footer />
     </>
   );
@@ -39,30 +29,10 @@ function AppShell({ children }) {
   const hydrated = useHydrated();
   const prefersReducedMotion = useReducedMotion();
   const reduceMotion = hydrated && prefersReducedMotion;
+  const theme = useTheme();
 
   return (
     <div className="app-shell">
-      <GradientOrbs />
-      {!reduceMotion && (
-        <>
-          <ParticlesLayer />
-          <GhostCursor
-            color="#ffffff"
-            brightness={0.25}
-            edgeIntensity={0}
-            trailLength={3}
-            inertia={0.35}
-            grainIntensity={0.05}
-            bloomStrength={0.04}
-            bloomRadius={1}
-            bloomThreshold={0.15}
-            fadeDelayMs={500}
-            fadeDurationMs={700}
-            mixBlendMode="screen"
-            zIndex={0}
-          />
-        </>
-      )}
       {reduceMotion ? (
         <div className="app-content">
           <AppContent>{children}</AppContent>
@@ -70,11 +40,11 @@ function AppShell({ children }) {
       ) : (
         <ClickSpark
           className="app-content"
-          sparkColor="#ff3b3b"
-          sparkSize={12}
-          sparkRadius={18}
-          sparkCount={10}
-          duration={450}
+          sparkColor={theme === 'light' ? '#111111' : '#ffffff'}
+          sparkSize={10}
+          sparkRadius={16}
+          sparkCount={8}
+          duration={400}
           easing="ease-out"
           extraScale={1.1}
         >

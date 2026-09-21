@@ -1,14 +1,15 @@
 'use client';
 
-import { motion as Motion } from 'framer-motion';
+import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import ThemeToggle from '../theme/ThemeToggle.jsx';
 import './Navbar.css';
 
 const NAV_LINKS = [
-  { href: '#contato', label: 'Contato' },
-  { href: '#sobre', label: 'Sobre' },
-  { href: '#trajetoria', label: 'Trajetória' },
-  { href: '#skills', label: 'Skills' },
+  { hash: '#projetos', label: 'Projetos' },
+  { hash: '#sobre', label: 'Sobre' },
+  { hash: '#experiencia', label: 'Experiência' },
+  { hash: '#contato', label: 'Contato', keepOnMobile: true },
 ];
 
 function Navbar() {
@@ -16,30 +17,25 @@ function Navbar() {
   const onHome = pathname === '/';
 
   return (
-    <Motion.header
-      className="navbar"
-      initial={{ y: -72, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-    >
+    <header className="navbar">
       <div className="navbar-container">
-        <nav className="nav-menu">
-          {NAV_LINKS.map((item, i) => (
-            <Motion.a
-              key={item.href}
-              href={onHome ? item.href : `/${item.href}`}
-              className="nav-link"
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4, delay: 0.15 + i * 0.06 }}
-              whileHover={{ color: 'var(--brand)' }}
+        <Link href="/" className="navbar-brand">
+          João Bittencourt
+        </Link>
+        <nav className="nav-menu" aria-label="Principal">
+          {NAV_LINKS.map((item) => (
+            <a
+              key={item.hash}
+              href={onHome ? item.hash : `/${item.hash}`}
+              className={`nav-link${item.keepOnMobile ? ' nav-link--mobile' : ''}`}
             >
               {item.label}
-            </Motion.a>
+            </a>
           ))}
+          <ThemeToggle />
         </nav>
       </div>
-    </Motion.header>
+    </header>
   );
 }
 
