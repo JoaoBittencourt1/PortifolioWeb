@@ -13,6 +13,9 @@ const smoothstep = (edge0, edge1, x) => {
 
 const ScrollExpand = ({
   src = '',
+  // Local addition: optional image for the light theme. Both images are rendered and CSS
+  // picks one via [data-theme], so the right photo shows before hydration (no flash).
+  lightSrc = '',
   mediaType = 'image',
   poster = '',
   alt = '',
@@ -201,6 +204,11 @@ const ScrollExpand = ({
         loop
         playsInline
       />
+    ) : lightSrc ? (
+      <div ref={mediaRef} className="scroll-expand__media">
+        <img className="scroll-expand__img" data-variant="dark" src={src} alt={alt} draggable={false} />
+        <img className="scroll-expand__img" data-variant="light" src={lightSrc} alt={alt} draggable={false} />
+      </div>
     ) : (
       <img ref={mediaRef} className="scroll-expand__media" src={src} alt={alt} draggable={false} />
     );

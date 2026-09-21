@@ -7,6 +7,16 @@
   margin-top: calc(-1 * var(--nav-height));
 }
 
+/* Night photo on the dark theme, day photo on the light theme */
+.home-scroll-expand .scroll-expand__img[data-variant='light'],
+[data-theme='light'] .home-scroll-expand .scroll-expand__img[data-variant='dark'] {
+  display: none;
+}
+
+[data-theme='light'] .home-scroll-expand .scroll-expand__img[data-variant='light'] {
+  display: block;
+}
+
 .home-scroll-expand .scroll-expand__title {
   /* Sized to stay inside the resting frame (42% wide), so the white text is always over the
      photo — readable in both themes. */

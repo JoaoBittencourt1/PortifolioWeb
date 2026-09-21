@@ -100,3 +100,14 @@
   pointer-events: none;
   will-change: opacity, transform;
 }
+
+/* Local addition: themed image pair (see lightSrc). The page decides which one shows. */
+.scroll-expand__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  user-select: none;
+  -webkit-user-drag: none;
+}

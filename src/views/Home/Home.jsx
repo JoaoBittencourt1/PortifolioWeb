@@ -159,7 +159,8 @@ function Home() {
       <ScrollExpand
         className="home-scroll-expand"
         src="/meinsky.webp"
-        alt="João de costas, olhando a cidade à noite do alto de um prédio"
+        lightSrc="/meinsky-day.webp"
+        alt="João de costas, olhando a cidade do alto de um prédio"
         title="João Bittencourt"
         scrollHint="Role para baixo"
         useWindowScroll
