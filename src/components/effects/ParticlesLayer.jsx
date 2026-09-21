@@ -1,3 +1,5 @@
+'use client';
+
 import { ParticlesProvider } from '@tsparticles/react';
 import { loadSlim } from '@tsparticles/slim';
 import ParticleBackground from './ParticleBackground.jsx';

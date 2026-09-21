@@ -1,7 +1,6 @@
+'use client';
+
 import { useState } from 'react';
-import githubIcon from '../../assets/github-icon.png';
-import linkedinIcon from '../../assets/linkedin-icon.webp';
-import capivarasGif from '../../../gifs/capivaras.gif';
 import './Footer.css';
 
 function Footer() {
@@ -23,11 +22,11 @@ function Footer() {
 
         <div className="footer-links">
           <a href="https://github.com/JoaoBittencourt1" target="_blank" rel="noreferrer">
-            <img src={githubIcon} alt="" className="footer-icon" />
+            <img src="/github-icon.png" alt="" className="footer-icon" />
             GitHub
           </a>
           <a href="https://linkedin.com/in/joaobittencourt1" target="_blank" rel="noreferrer">
-            <img src={linkedinIcon} alt="" className="footer-icon" />
+            <img src="/linkedin-icon.webp" alt="" className="footer-icon" />
             LinkedIn
           </a>
           <a href="mailto:jvabgo@gmail.com">jvabgo@gmail.com</a>
@@ -43,7 +42,7 @@ function Footer() {
           onClick={() => setShowCapivara(false)}
         >
           <img
-            src={capivarasGif}
+            src="/capivaras.gif"
             alt="Capivara relaxando na banheira"
             className="capivara-gif"
             onClick={(e) => e.stopPropagation()}

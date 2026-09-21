@@ -1,9 +1,8 @@
+'use client';
+
 import { useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
-import meImg from '../../assets/me.jpeg';
-import githubIcon from '../../assets/github-icon.png';
-import linkedinIcon from '../../assets/linkedin-icon.webp';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import Reveal from '../../components/effects/Reveal.jsx';
 import LiquidGlassButton from '../../components/effects/LiquidGlassButton.jsx';
 import DetailModal from '../../components/effects/DetailModal.jsx';
@@ -118,13 +117,13 @@ const CONTACT_LINKS = [
     label: 'GitHub',
     value: 'github.com/JoaoBittencourt1',
     href: 'https://github.com/JoaoBittencourt1',
-    icon: githubIcon,
+    icon: '/github-icon.png',
   },
   {
     label: 'LinkedIn',
     value: 'linkedin.com/in/joaobittencourt1',
     href: 'https://linkedin.com/in/joaobittencourt1',
-    icon: linkedinIcon,
+    icon: '/linkedin-icon.webp',
   },
 ];
 
@@ -285,9 +284,9 @@ function Hero({ onOpen }) {
               PHP (Laravel), PostgreSQL e Next.js (TypeScript/JavaScript). Atuo em todas as camadas
               de uma aplicação — APIs, front-end, banco de dados e escalabilidade horizontal —
               aplicando boas práticas de arquitetura e Clean Code. Em paralelo, idealizo e lidero
-              tecnicamente a <Link to="/vanep" className="inline-detail-trigger">Vanep</Link>, uma
+              tecnicamente a <Link href="/vanep" className="inline-detail-trigger">Vanep</Link>, uma
               plataforma de digitalização do transporte escolar, e desenvolvo o{' '}
-              <Link to="/linuxhub" className="inline-detail-trigger">LinuxHub</Link>, um portal de
+              <Link href="/linuxhub" className="inline-detail-trigger">LinuxHub</Link>, um portal de
               distros Linux com instalador universal.
             </p>
           </motion.div>
@@ -343,7 +342,7 @@ function Hero({ onOpen }) {
             animate={reduceMotion ? false : { y: [0, -8, 0] }}
             transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
           >
-            <img src={meImg} alt="Foto de João Bittencourt" className="hero-photo" />
+            <img src="/me.jpeg" alt="Foto de João Bittencourt" className="hero-photo" />
           </motion.div>
         </motion.div>
       </div>
@@ -421,7 +420,7 @@ function About({ onOpen }) {
                     viewport={{ once: true, margin: '-40px' }}
                     transition={{ duration: 0.5, delay: i * 0.1, ease: EASE }}
                   >
-                    <Link to={f.to} className="quick-fact quick-fact-button">
+                    <Link href={f.to} className="quick-fact quick-fact-button">
                       <span className="quick-fact-label">{f.label}</span>
                       <span className="quick-fact-value">{f.value}</span>
                     </Link>

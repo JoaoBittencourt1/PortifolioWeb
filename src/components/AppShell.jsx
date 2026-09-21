@@ -1,49 +1,44 @@
-import { useEffect } from 'react';
+'use client';
+
+import { useSyncExternalStore } from 'react';
+import dynamic from 'next/dynamic';
 import { useReducedMotion } from 'framer-motion';
-import { Route, Routes, useLocation } from 'react-router-dom';
-import Navbar from './components/navbar/Navbar.jsx';
-import Footer from './components/footer/Footer.jsx';
-import Home from './pages/Home/Home.jsx';
-import Vanep from './pages/Vanep/Vanep.jsx';
-import LinuxHub from './pages/LinuxHub/LinuxHub.jsx';
-import GradientOrbs from './components/effects/GradientOrbs.jsx';
-import ParticlesLayer from './components/effects/ParticlesLayer.jsx';
-import GhostCursor from './components/effects/GhostCursor/GhostCursor.jsx';
-import ClickSpark from './components/effects/ClickSpark/ClickSpark.jsx';
-import './components/effects/experimental.css';
-import './App.css';
+import Navbar from './navbar/Navbar.jsx';
+import Footer from './footer/Footer.jsx';
+import GradientOrbs from './effects/GradientOrbs.jsx';
+import ClickSpark from './effects/ClickSpark/ClickSpark.jsx';
+import './effects/experimental.css';
+import './AppShell.css';
 
-function ScrollToTop() {
-  const { pathname, hash } = useLocation();
+// WebGL/canvas effects only run in the browser.
+const ParticlesLayer = dynamic(() => import('./effects/ParticlesLayer.jsx'), { ssr: false });
+const GhostCursor = dynamic(() => import('./effects/GhostCursor/GhostCursor.jsx'), { ssr: false });
 
-  useEffect(() => {
-    if (!hash) window.scrollTo(0, 0);
-  }, [pathname, hash]);
+const subscribeNoop = () => () => {};
 
-  return null;
+// false during SSR and hydration, true afterwards — keeps the first client render identical to the server output.
+function useHydrated() {
+  return useSyncExternalStore(subscribeNoop, () => true, () => false);
 }
 
-function AppContent() {
+function AppContent({ children }) {
   return (
     <>
       <div className="side-lines" aria-hidden="true">
         <span className="side-line side-line-1" />
         <span className="side-line side-line-2" />
       </div>
-      <ScrollToTop />
       <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/vanep" element={<Vanep />} />
-        <Route path="/linuxhub" element={<LinuxHub />} />
-      </Routes>
+      {children}
       <Footer />
     </>
   );
 }
 
-function App() {
-  const reduceMotion = useReducedMotion();
+function AppShell({ children }) {
+  const hydrated = useHydrated();
+  const prefersReducedMotion = useReducedMotion();
+  const reduceMotion = hydrated && prefersReducedMotion;
 
   return (
     <div className="app-shell">
@@ -70,7 +65,7 @@ function App() {
       )}
       {reduceMotion ? (
         <div className="app-content">
-          <AppContent />
+          <AppContent>{children}</AppContent>
         </div>
       ) : (
         <ClickSpark
@@ -83,11 +78,11 @@ function App() {
           easing="ease-out"
           extraScale={1.1}
         >
-          <AppContent />
+          <AppContent>{children}</AppContent>
         </ClickSpark>
       )}
     </div>
   );
 }
 
-export default App;
+export default AppShell;

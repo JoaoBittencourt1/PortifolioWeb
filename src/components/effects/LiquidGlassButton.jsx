@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useRef } from 'react';
 import { motion as Motion, useReducedMotion } from 'framer-motion';
 import './LiquidGlassButton.css';
