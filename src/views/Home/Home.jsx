@@ -72,17 +72,22 @@ const PROJECTS = [
 
 const EXPERIENCE = [
   {
-    period: '2026 — atual',
-    title: 'Software Engineer',
-    place: 'Full stack',
-    body: 'Funcionalidades full stack em produção com PHP (Laravel), Dart (Flutter) e TypeScript (Next.js), incluindo pipelines de CI/CD, integração entre front-end e back-end e evolução de sistemas existentes.',
+    period: '2024',
+    title: 'Professor particular',
+    place: 'Lógica de programação',
+    body: 'Aulas individuais para iniciantes, com foco em fundamentos e resolução de problemas.',
   },
   {
-    period: '2026 — atual',
-    title: 'Tech Lead & Desenvolvedor principal',
-    place: 'Vanep',
-    href: '/vanep',
-    body: 'Arquitetura, decisões de stack e infraestrutura do app que digitaliza a van escolar, com API em Java/Spring Boot, app Flutter e painel web em Next.js.',
+    period: '2025',
+    title: 'Líder técnico — e-commerce',
+    place: 'Mabbu',
+    body: 'Liderei o desenvolvimento de um e-commerce do zero com API em Java (Spring Boot), front-end em Next.js (TypeScript) e MySQL.',
+  },
+  {
+    period: '2025',
+    title: 'Desenvolvedor Full Stack',
+    place: 'Estágio',
+    body: 'Telas, regras de negócio e correções com Laravel (PHP, Blade) e Microsoft SQL Server.',
   },
   {
     period: '2025 — atual',
@@ -92,22 +97,17 @@ const EXPERIENCE = [
     body: 'App desktop em C# (.NET/WPF) com MVVM e arquitetura por feature, desenvolvido com processo guiado por especificações (OpenSpec).',
   },
   {
-    period: '2025',
-    title: 'Desenvolvedor Full Stack',
-    place: 'Estágio',
-    body: 'Telas, regras de negócio e correções com Laravel (PHP, Blade) e Microsoft SQL Server.',
+    period: '2026 — atual',
+    title: 'Tech Lead & Desenvolvedor principal',
+    place: 'Vanep',
+    href: '/vanep',
+    body: 'Arquitetura, decisões de stack e infraestrutura do app que digitaliza a van escolar, com API em Java/Spring Boot, app Flutter e painel web em Next.js.',
   },
   {
-    period: '2025',
-    title: 'Líder técnico — e-commerce',
-    place: 'Mabbu',
-    body: 'Liderei o desenvolvimento de um e-commerce do zero com API em Java (Spring Boot), front-end em Next.js (TypeScript) e MySQL.',
-  },
-  {
-    period: '2024',
-    title: 'Professor particular',
-    place: 'Lógica de programação',
-    body: 'Aulas individuais para iniciantes, com foco em fundamentos e resolução de problemas.',
+    period: '2026 — atual',
+    title: 'Software Engineer',
+    place: 'Full stack',
+    body: 'Funcionalidades full stack em produção com PHP (Laravel), Dart (Flutter) e TypeScript (Next.js), incluindo pipelines de CI/CD, integração entre front-end e back-end e evolução de sistemas existentes.',
   },
 ];
 
@@ -554,10 +554,6 @@ function Contact() {
         <div>
           <SectionHead label="05 / Contato" title="Vamos conversar?" />
           <Reveal>
-            <p className="section-copy">
-              Aberto a oportunidades e conversas sobre engenharia de software, arquitetura de
-              sistemas, a Vanep ou o LinuxBit.
-            </p>
             <div className="intro-cta">
               <a href={`mailto:${EMAIL}`} className="btn btn-primary">
                 Enviar email

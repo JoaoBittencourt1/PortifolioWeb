@@ -497,6 +497,11 @@
   gap: 48px;
 }
 
+/* The button sits right under the section title */
+.contact-grid .intro-cta {
+  margin-top: 0;
+}
+
 .contact-list {
   margin: 0;
   padding: 0;
