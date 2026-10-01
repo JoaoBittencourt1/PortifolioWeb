@@ -3,11 +3,24 @@
 import { useLayoutEffect } from 'react';
 import { setTheme, useTheme } from './theme.js';
 import { THEME_STORAGE_KEY } from './theme-config.js';
+import { useLang } from '../lang/lang.js';
 import './ThemeToggle.css';
+
+const LABELS = {
+  pt: {
+    light: { aria: 'Ativar tema claro', title: 'Tema claro' },
+    dark: { aria: 'Ativar tema escuro', title: 'Tema escuro' },
+  },
+  en: {
+    light: { aria: 'Switch to light theme', title: 'Light theme' },
+    dark: { aria: 'Switch to dark theme', title: 'Dark theme' },
+  },
+};
 
 function ThemeToggle() {
   const theme = useTheme();
   const next = theme === 'light' ? 'dark' : 'light';
+  const label = LABELS[useLang()][next];
 
   // Dev Strict Mode remounts <html> and drops the attribute set by the inline script; re-apply it.
   // No-op in production.
@@ -25,8 +38,8 @@ function ThemeToggle() {
       type="button"
       className="theme-toggle"
       onClick={() => setTheme(next)}
-      aria-label={next === 'light' ? 'Ativar tema claro' : 'Ativar tema escuro'}
-      title={next === 'light' ? 'Tema claro' : 'Tema escuro'}
+      aria-label={label.aria}
+      title={label.title}
     >
       {/* Both icons render; CSS shows the one matching the theme, so SSR and client markup agree. */}
       <svg className="theme-toggle__icon theme-toggle__icon--sun" viewBox="0 0 24 24" aria-hidden="true">
