@@ -10,6 +10,8 @@ import ScrollExpand from '../../components/effects/ScrollExpand/ScrollExpand.jsx
 import CardSwap, { Card } from '../../components/effects/CardSwap/CardSwap.jsx';
 import TiltedCard from '../../components/effects/TiltedCard/TiltedCard.jsx';
 import ThoughtLine from '../../components/effects/ThoughtLine/ThoughtLine.jsx';
+import { useLang } from '../../components/lang/lang.js';
+import { CONTENT } from './content.js';
 import './Home.css';
 
 // WebGL background: browser-only.
@@ -21,125 +23,6 @@ const EMAIL = 'jvabgo@gmail.com';
 const GITHUB_URL = 'https://github.com/JoaoBittencourt1';
 const LINKEDIN_URL = 'https://linkedin.com/in/joaobittencourt1';
 
-const NOW = [
-  { label: 'Atualmente', title: 'Software Engineer', body: 'Full stack em produção com Laravel, Flutter e Next.js.' },
-  { label: 'Construindo', title: 'Vanep', body: 'A digitalização da van escolar em um só aplicativo.' },
-  { label: 'Por hobby', title: 'LinuxBit', body: 'Portal de distros Linux com instalador universal.' },
-  { label: 'Estudando', title: 'Ciência da Computação', body: 'Universidade Católica de Brasília · 6º semestre.' },
-];
-
-const WORK_STEPS = [
-  'Entendendo o problema',
-  'Idealizando a solução',
-  'Projetando a arquitetura',
-  'Modelando os dados',
-  'Implementando e testando',
-  'Configurando CI/CD',
-  'Fazendo o deploy',
-];
-
-const PROJECTS = [
-  {
-    name: 'Vanep',
-    href: '/vanep',
-    link: { href: 'https://www.vanep.com.br', label: 'vanep.com.br' },
-    image: { src: '/projects/vanep-van.webp', alt: 'Motorista ao lado de uma van escolar' },
-    period: '2026 — em desenvolvimento',
-    role: 'Tech Lead & Desenvolvedor principal',
-    summary:
-      'A digitalização da van escolar em um só aplicativo: motoristas verificados, contrato digital, rastreamento em tempo real e notificação a cada etapa do trajeto.',
-    stack: ['Java 25', 'Spring Boot 4', 'Flutter', 'Next.js', 'PostgreSQL + PostGIS', 'Docker'],
-  },
-  {
-    name: 'LinuxBit',
-    href: '/linuxbit',
-    link: { href: 'https://github.com/JoaoBittencourt1/LinuxBit', label: 'GitHub' },
-    image: { src: '/projects/linuxbit-arch.webp', alt: 'Desktop do Arch Linux' },
-    period: '2025 — em desenvolvimento',
-    role: 'Idealizador & Desenvolvedor',
-    summary:
-      'Portal de distros Linux com instalador universal: compare distribuições e instale direto pelo Windows, sem gravar pendrive.',
-    stack: ['C#', '.NET', 'WPF', 'MVVM', 'Bash', 'OpenSpec'],
-  },
-];
-
-const EXPERIENCE = [
-  {
-    period: '2024',
-    title: 'Professor particular',
-    place: 'Lógica de programação',
-    body: 'Aulas individuais para iniciantes, com foco em fundamentos e resolução de problemas.',
-  },
-  {
-    period: '2025',
-    title: 'Líder técnico — e-commerce',
-    place: 'Mabbu',
-    body: 'Liderei o desenvolvimento de um e-commerce do zero com API em Java (Spring Boot), front-end em Next.js (TypeScript) e MySQL.',
-  },
-  {
-    period: '2025',
-    title: 'Desenvolvedor Full Stack',
-    place: 'Estágio',
-    body: 'Telas, regras de negócio e correções com Laravel (PHP, Blade) e Microsoft SQL Server.',
-  },
-  {
-    period: '2025 — atual',
-    title: 'Idealizador & Desenvolvedor',
-    place: 'LinuxBit',
-    href: '/linuxbit',
-    body: 'App desktop em C# (.NET/WPF) com MVVM e arquitetura por feature, desenvolvido com processo guiado por especificações (OpenSpec).',
-  },
-  {
-    period: '2026 — atual',
-    title: 'Tech Lead & Desenvolvedor principal',
-    place: 'Vanep',
-    href: '/vanep',
-    body: 'Arquitetura, decisões de stack e infraestrutura do app que digitaliza a van escolar, com API em Java/Spring Boot, app Flutter e painel web em Next.js.',
-  },
-  {
-    period: '2026 — atual',
-    title: 'Software Engineer',
-    place: 'Full stack',
-    body: 'Funcionalidades full stack em produção com PHP (Laravel), Dart (Flutter) e TypeScript (Next.js), incluindo pipelines de CI/CD, integração entre front-end e back-end e evolução de sistemas existentes.',
-  },
-];
-
-const SKILL_GROUPS = [
-  {
-    title: 'Linguagens & frameworks',
-    items: ['Java (Spring Boot)', 'PHP (Laravel)', 'TypeScript', 'JavaScript', 'React', 'Next.js', 'Dart (Flutter)', 'C# (.NET / WPF)'],
-  },
-  {
-    title: 'Back-end',
-    items: ['Spring Security', 'JWT', 'OAuth 2.0', 'JPA / Hibernate', 'Eloquent (Laravel)', 'Maven', 'REST', 'WebSocket', 'OpenAPI / Swagger'],
-  },
-  {
-    title: 'Dados & mensageria',
-    items: ['PostgreSQL + PostGIS', 'MySQL', 'SQL Server', 'MongoDB', 'Redis', 'Flyway', 'RabbitMQ', 'Kafka'],
-  },
-  {
-    title: 'Front-end & mobile',
-    items: ['Tailwind CSS', 'Vitest', 'BLoC', 'Dio', 'Hive', 'Firebase Cloud Messaging'],
-  },
-  {
-    title: 'Infra & servidores',
-    items: ['Linux (Ubuntu / Debian)', 'VPS', 'Nginx', 'Caddy', 'Traefik', 'Cloudflare', 'SSH · UFW · fail2ban', 'systemd · cron'],
-  },
-  {
-    title: 'Containers & CI/CD',
-    items: ['Docker', 'Docker Compose', 'GitHub Actions', 'GitHub Container Registry', 'Git'],
-  },
-  { title: 'Observabilidade', items: ['Prometheus', 'Grafana', 'Loki', 'Sentry', 'Uptime Kuma'] },
-  {
-    title: 'Testes & ferramentas',
-    items: ['JUnit', 'Mockito', 'Cypress (E2E)', 'Postman', 'Makefile', 'Android Studio'],
-  },
-  {
-    title: 'Arquitetura & práticas',
-    items: ['Clean Architecture', 'DDD', 'SOLID', 'Clean Code', 'TDD', 'SDD (OpenSpec)', 'Code review', 'Scrum / Kanban'],
-  },
-];
-
 const CONTACT_LINKS = [
   { label: 'Email', value: EMAIL, href: `mailto:${EMAIL}` },
   { label: 'GitHub', value: 'github.com/JoaoBittencourt1', href: GITHUB_URL },
@@ -147,15 +30,17 @@ const CONTACT_LINKS = [
 ];
 
 function Home() {
+  const t = CONTENT[useLang()].hero;
+
   return (
     <>
       <ScrollExpand
         className="home-scroll-expand"
         src="/meinsky.webp"
         lightSrc="/meinsky-day.webp"
-        alt="João de costas, olhando a cidade do alto de um prédio"
+        alt={t.alt}
         title="João Bittencourt"
-        scrollHint="Role para baixo"
+        scrollHint={t.scrollHint}
         useWindowScroll
       >
         <p className="eyebrow home-scroll-expand__eyebrow">João Bittencourt</p>
@@ -173,6 +58,8 @@ function Home() {
 }
 
 function Intro() {
+  const content = CONTENT[useLang()];
+  const t = content.intro;
   const reduceMotion = useReducedMotion();
   const item = (delay) =>
     reduceMotion
@@ -206,29 +93,28 @@ function Intro() {
       <div className="container intro-grid">
         <div>
           <motion.p className="eyebrow" {...item(0)}>
-            Software Engineer · Full stack
+            {t.eyebrow}
           </motion.p>
           <motion.h1 className="intro-title" {...item(0.05)}>
-            Construo sistemas completos — da API ao app, do banco de dados ao deploy.
+            {t.title}
           </motion.h1>
           <motion.p className="intro-copy" {...item(0.1)}>
-            Sou João Bittencourt, Software Engineer com experiência em Java (Spring Boot),
-            PHP (Laravel), PostgreSQL e Next.js. Em paralelo, lidero tecnicamente a{' '}
+            {t.copy[0]}
             <Link href="/vanep" className="text-link">
               Vanep
-            </Link>{' '}
-            e, no tempo livre, desenvolvo o{' '}
+            </Link>
+            {t.copy[1]}
             <Link href="/linuxbit" className="text-link">
               LinuxBit
             </Link>
-            .
+            {t.copy[2]}
           </motion.p>
           <motion.div className="intro-cta" {...item(0.15)}>
             <a href="#projetos" className="btn btn-primary">
-              Ver projetos
+              {t.ctaProjects}
             </a>
             <a href="#contato" className="btn btn-secondary">
-              Entrar em contato
+              {t.ctaContact}
             </a>
           </motion.div>
         </div>
@@ -246,8 +132,9 @@ function Intro() {
               easing="smooth"
               pauseOnHover
             >
-              {NOW.map((n) => (
-                <Card key={n.title} customClass="now-card">
+              {/* Index keys: CardSwap positions these nodes, so they must survive a language switch. */}
+              {content.now.map((n, i) => (
+                <Card key={i} customClass="now-card">
                   <span className="now-card-label">{n.label}</span>
                   <span className="now-card-title">{n.title}</span>
                   <span className="now-card-body">{n.body}</span>
@@ -257,8 +144,8 @@ function Intro() {
           </motion.div>
         )}
         <motion.dl className={`now-list${reduceMotion ? '' : ' now-list--compact'}`} {...item(0.2)}>
-          {NOW.map((n) => (
-            <div key={n.title} className="now-row">
+          {content.now.map((n, i) => (
+            <div key={i} className="now-row">
               <dt>{n.label}</dt>
               <dd>{n.title} — {n.body}</dd>
             </div>
@@ -270,15 +157,17 @@ function Intro() {
 }
 
 function Projects() {
+  const t = CONTENT[useLang()].projects;
+
   return (
     <section id="projetos" className="section">
       <div className="container">
-        <SectionHead label="01 / Projetos" title="Projetos em destaque" />
+        <SectionHead label={t.label} title={t.title} />
 
         <div className="projects-grid">
-          {PROJECTS.map((p, i) => (
+          {t.items.map((p, i) => (
             <Reveal key={p.name} delay={i * 0.08}>
-              <ProjectCard project={p} />
+              <ProjectCard project={p} viewLabel={t.viewProject} />
             </Reveal>
           ))}
         </div>
@@ -287,11 +176,11 @@ function Projects() {
   );
 }
 
-function ProjectCard({ project: p }) {
+function ProjectCard({ project: p, viewLabel }) {
   return (
     <article className="project-card">
       <div className="project-card-media">
-        <img src={p.image.src} alt={p.image.alt} className="project-card-img" />
+        <img src={p.image} alt={p.imageAlt} className="project-card-img" />
       </div>
       <div className="project-card-body">
         <div className="project-card-top">
@@ -313,7 +202,7 @@ function ProjectCard({ project: p }) {
         </ul>
         <div className="project-card-actions">
           <span className="arrow-link">
-            Ver projeto <span aria-hidden="true">→</span>
+            {viewLabel} <span aria-hidden="true">→</span>
           </span>
           <a href={p.link.href} target="_blank" rel="noreferrer" className="project-card-repo">
             {p.link.label} ↗
@@ -325,16 +214,18 @@ function ProjectCard({ project: p }) {
 }
 
 function About() {
+  const t = CONTENT[useLang()].about;
+
   return (
     <section id="sobre" className="section">
       <div className="container about-grid">
         <div className="about-aside">
-          <SectionHead label="02 / Sobre" title="Sobre mim" />
+          <SectionHead label={t.label} title={t.title} />
           <Reveal className="about-photo">
             <TiltedCard
               imageSrc="/me-graduate.webp"
-              altText="João Bittencourt na formatura, de beca e capelo"
-              captionText="Formatura · 2023"
+              altText={t.photoAlt}
+              captionText={t.photoCaption}
               containerWidth="280px"
               containerHeight="350px"
               imageWidth="280px"
@@ -348,29 +239,15 @@ function About() {
 
         <div>
           <Reveal>
-            <p className="section-copy">
-              Tenho 20 anos, moro em Brasília e sou Software Engineer full stack e estudante de
-              Ciência da Computação na Universidade Católica de Brasília. Trabalho de ponta a ponta: APIs em Java (Spring Boot) e PHP
-              (Laravel), interfaces web com React e Next.js, apps mobile em Flutter e bancos como
-              PostgreSQL, MySQL e Redis.
-            </p>
-            <p className="section-copy">
-              Também cuido do que vem depois do código — servidores Linux, Nginx, Docker, pipelines
-              de CI/CD com GitHub Actions e monitoramento com Prometheus e Grafana. Na Vanep, faço
-              tudo isso da arquitetura ao deploy.
-            </p>
-            <p className="section-copy">
-              No tempo livre, desenvolvo o LinuxBit por hobby: um app desktop em C# e .NET que
-              ajuda quem quer experimentar Linux a escolher e instalar uma distro.
-            </p>
-            <p className="section-copy">
-              Gosto de código fácil de manter e evoluir, e hoje estou me aprofundando em sistemas
-              distribuídos: mensageria, cache, escalabilidade e alta disponibilidade.
-            </p>
+            {t.paragraphs.map((text, i) => (
+              <p key={i} className="section-copy">
+                {text}
+              </p>
+            ))}
           </Reveal>
           <Reveal className="work-process">
-            <p className="eyebrow">Como eu trabalho</p>
-            <WorkProcess />
+            <p className="eyebrow">{t.processLabel}</p>
+            <WorkProcess labels={t} />
           </Reveal>
         </div>
       </div>
@@ -381,33 +258,34 @@ function About() {
 const WORK_STEP_MS = 1100;
 
 // Plays the "thinking" trace once, the first time it scrolls into view.
-function WorkProcess() {
+function WorkProcess({ labels }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const reduceMotion = useReducedMotion();
   const [count, setCount] = useState(0);
+  const total = labels.steps.length;
 
   useEffect(() => {
     if (!inView || reduceMotion) return undefined;
     const id = window.setInterval(() => {
       setCount((c) => {
-        if (c > WORK_STEPS.length) window.clearInterval(id);
-        return Math.min(c + 1, WORK_STEPS.length + 1);
+        if (c > total) window.clearInterval(id);
+        return Math.min(c + 1, total + 1);
       });
     }, WORK_STEP_MS);
     return () => window.clearInterval(id);
-  }, [inView, reduceMotion]);
+  }, [inView, reduceMotion, total]);
 
-  const finished = reduceMotion || count > WORK_STEPS.length;
-  const steps = finished ? WORK_STEPS : WORK_STEPS.slice(0, count);
+  const finished = reduceMotion || count > total;
+  const steps = finished ? labels.steps : labels.steps.slice(0, count);
 
   return (
     <div ref={ref}>
       {/* Remount on entering view so the built-in timer starts with the animation */}
       <ThoughtLine
         key={inView ? 'running' : 'idle'}
-        label="Pensando…"
-        doneLabel="Do zero ao deploy em"
+        label={labels.thinking}
+        doneLabel={labels.done}
         steps={steps}
         working={!finished}
         showTimer={!reduceMotion}
@@ -420,16 +298,17 @@ function WorkProcess() {
 }
 
 function Experience() {
+  const t = CONTENT[useLang()].experience;
   const listRef = useRef(null);
   const reduceMotion = useReducedMotion();
   // 0 → 1 as the list passes the middle of the viewport; drives the white fill of the rail.
   const { scrollYProgress } = useScroll({ target: listRef, offset: ['start 60%', 'end 60%'] });
-  const last = EXPERIENCE.length - 1;
+  const last = t.items.length - 1;
 
   return (
     <section id="experiencia" className="section">
       <div className="container">
-        <SectionHead label="03 / Experiência" title="Trajetória" />
+        <SectionHead label={t.label} title={t.title} />
 
         <ol ref={listRef} className="timeline">
           <span className="timeline-rail" aria-hidden="true">
@@ -438,8 +317,8 @@ function Experience() {
               style={{ scaleY: reduceMotion ? 1 : scrollYProgress }}
             />
           </span>
-          {EXPERIENCE.map((e, i) => (
-            <li key={`${e.title}-${e.place}`} className="timeline-item">
+          {t.items.map((e, i) => (
+            <li key={i} className="timeline-item">
               <TimelineDot
                 progress={scrollYProgress}
                 at={last ? i / last : 0}
@@ -483,14 +362,16 @@ function TimelineDot({ progress, at, static: isStatic }) {
 }
 
 function Skills() {
+  const t = CONTENT[useLang()].skills;
+
   return (
     <section id="skills" className="section">
       <div className="container">
-        <SectionHead label="04 / Stack" title="Ferramentas e práticas" />
+        <SectionHead label={t.label} title={t.title} />
 
         <div className="skills-list">
-          {SKILL_GROUPS.map((g, i) => (
-            <Reveal key={g.title} className="skills-row" delay={i * 0.05}>
+          {t.groups.map((g, i) => (
+            <Reveal key={i} className="skills-row" delay={i * 0.05}>
               <h3 className="skills-title">{g.title}</h3>
               <ul className="tag-list">
                 {g.items.map((item) => (
@@ -508,15 +389,17 @@ function Skills() {
 }
 
 function Contact() {
+  const t = CONTENT[useLang()].contact;
+
   return (
     <section id="contato" className="section">
       <div className="container contact-grid">
         <div>
-          <SectionHead label="05 / Contato" title="Vamos conversar?" />
+          <SectionHead label={t.label} title={t.title} />
           <Reveal>
             <div className="intro-cta">
               <a href={`mailto:${EMAIL}`} className="btn btn-primary">
-                Enviar email
+                {t.sendEmail}
               </a>
             </div>
           </Reveal>

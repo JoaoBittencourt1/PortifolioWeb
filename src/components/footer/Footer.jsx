@@ -1,7 +1,13 @@
 'use client';
 
 import { useState } from 'react';
+import { useLang } from '../lang/lang.js';
 import './Footer.css';
+
+const TEXT = {
+  pt: { social: 'Redes', capivaraAlt: 'Capivara relaxando na banheira' },
+  en: { social: 'Social links', capivaraAlt: 'Capybara relaxing in a bathtub' },
+};
 
 const LINKS = [
   { href: 'https://github.com/JoaoBittencourt1', label: 'GitHub' },
@@ -12,6 +18,7 @@ const LINKS = [
 function Footer() {
   const year = new Date().getFullYear();
   const [showCapivara, setShowCapivara] = useState(false);
+  const t = TEXT[useLang()];
 
   return (
     <footer className="footer">
@@ -29,7 +36,7 @@ function Footer() {
           {year}
         </p>
 
-        <nav className="footer-links" aria-label="Redes">
+        <nav className="footer-links" aria-label={t.social}>
           {LINKS.map((l) => (
             <a
               key={l.label}
@@ -51,7 +58,7 @@ function Footer() {
         >
           <img
             src="/capivaras.gif"
-            alt="Capivara relaxando na banheira"
+            alt={t.capivaraAlt}
             className="capivara-gif"
             onClick={(e) => e.stopPropagation()}
           />

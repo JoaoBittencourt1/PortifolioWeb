@@ -2,14 +2,19 @@
 
 import Link from 'next/link';
 import Reveal from '../effects/Reveal.jsx';
+import { useLang } from '../lang/lang.js';
+
+const BACK_LABEL = { pt: 'Projetos', en: 'Projects' };
 
 function ProjectHero({ title, tagline, role, meta, links = [] }) {
+  const lang = useLang();
+
   return (
     <section className="project-hero">
       <div className="container">
         <Reveal>
           <Link href="/#projetos" className="project-back">
-            <span aria-hidden="true">←</span> Projetos
+            <span aria-hidden="true">←</span> {BACK_LABEL[lang]}
           </Link>
         </Reveal>
 
@@ -29,8 +34,8 @@ function ProjectHero({ title, tagline, role, meta, links = [] }) {
         </Reveal>
 
         <Reveal as="dl" className="project-meta" delay={0.1}>
-          {meta.map((m) => (
-            <div key={m.label} className="project-meta-item">
+          {meta.map((m, i) => (
+            <div key={i} className="project-meta-item">
               <dt>{m.label}</dt>
               <dd>{m.value}</dd>
             </div>
